@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - Enemy
+  - Food
+  - Golden
   layers:
   - Default
   - TransparentFX

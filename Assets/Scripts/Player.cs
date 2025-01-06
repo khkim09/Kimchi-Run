@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
     [Header("References")]
     [SerializeField] private Rigidbody2D playerRigidBody; // 'Player' 물리 법칙 적용
     [SerializeField] private Animator playerAnimator; // 'Player' 애니메이션 적용
+    [SerializeField] private BoxCollider2D playerCollider; // 'Player' death 구현
+    [SerializeField] private int lives = 3; // 생명
+    [SerializeField] private bool isInvincible = false; // 무적 상태
 
     void Update()
     {
@@ -41,16 +44,60 @@ public class Player : MonoBehaviour
         }
     }
 
+    void KillPlayer()
+    {
+        playerCollider.enabled = false;
+        playerAnimator.enabled = false;
+        playerRigidBody.linearVelocity = Vector2.zero;
+        playerRigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+
+        // 모든 object(배경, 장애물, food 등) 움직임 멈추도록 구현
+    }
+
+    void Hit()
+    {
+        lives -= 1;
+        if (lives == 0)
+            KillPlayer();
+    }
+
+    void Heal()
+    {
+        if (lives >= 3)
+            return;
+        lives += 1;
+    }
+
+    void StartInvincible()
+    {
+        isInvincible = true; // 5s 간 무적
+        Invoke("StopInvincible", 5.0f); // StopInvincible method 호출 (무적 off)
+    }
+
+    void StopInvincible()
+    {
+        isInvincible = false;
+    }
+
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.tag == "enemy")
+        if (collider.tag == "Enemy")
         {
-
+            if (!isInvincible) // 무적 상태 아닐 경우에만 체력 - 1
+            {
+                Destroy(collider.gameObject);
+                Hit();
+            }
         }
-        
-        if (collider.tag == "food")
+        else if (collider.tag == "Food")
         {
-
+            Destroy(collider.gameObject);
+            Heal();
+        }
+        else if (collider.tag == "Golden")
+        {
+            Destroy(collider.gameObject);
+            StartInvincible();
         }
     }
 }

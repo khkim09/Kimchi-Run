@@ -317,11 +317,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b916c4691fec3439393234fb34d6e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 12
+  jumpForce: 14
   isJumping: 0
   jumpCnt: 0
   playerRigidBody: {fileID: 103687877}
   playerAnimator: {fileID: 103687873}
+  playerCollider: {fileID: 103687876}
+  lives: 3
+  isInvincible: 0
 --- !u!1 &511671384
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +368,7 @@ Transform:
   m_GameObject: {fileID: 511671384}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.62, y: -3.26, z: 20}
+  m_LocalPosition: {x: 15, y: -3.26, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -740,6 +743,56 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 0.58294904}
   m_EdgeRadius: 0
+--- !u!1 &936693831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 936693833}
+  - component: {fileID: 936693832}
+  m_Layer: 0
+  m_Name: Food Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &936693832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936693831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f648869fdbbacd44bbbb785195d8f2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSpawnDelay: 7
+  maxSpawnDelay: 15
+  gameObjects:
+  - {fileID: 1628964732620704010, guid: 3f7814ba919c24a468eaed68d2453146, type: 3}
+  - {fileID: 1628964732620704010, guid: 5bccc044a35747f479751417b19efea7, type: 3}
+  - {fileID: 1628964732620704010, guid: 6965d1f57e2f508408504db8444db01b, type: 3}
+--- !u!4 &936693833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936693831}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18, y: 0, z: 20}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &977378267
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,6 +917,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.1
   meshRenderer: {fileID: 977378269}
+--- !u!1 &1622964852
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1622964854}
+  - component: {fileID: 1622964853}
+  m_Layer: 0
+  m_Name: Gold Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1622964853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622964852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f648869fdbbacd44bbbb785195d8f2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSpawnDelay: 15
+  maxSpawnDelay: 30
+  gameObjects:
+  - {fileID: 1628964732620704010, guid: ebef05fe93c663245b8e8033c400faed, type: 3}
+--- !u!4 &1622964854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622964852}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25, y: 0, z: 20}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1630588395
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,7 +995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSpawnDelay: 3
-  maxSpawnDelay: 6
+  maxSpawnDelay: 8
   gameObjects:
   - {fileID: 2315431515908998842, guid: 51d64436d420505409b729e244ee2ebd, type: 3}
   - {fileID: 2315431515908998842, guid: de04c526a17d03f4e8de603762d4ee99, type: 3}
@@ -910,7 +1011,7 @@ Transform:
   m_GameObject: {fileID: 1630588395}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.72, y: -3.26, z: 50}
+  m_LocalPosition: {x: 12, y: -3.26, z: 50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1052,3 +1153,5 @@ SceneRoots:
   - {fileID: 103687875}
   - {fileID: 1630588397}
   - {fileID: 511671386}
+  - {fileID: 936693833}
+  - {fileID: 1622964854}
