@@ -133,9 +133,9 @@ GameObject:
   - component: {fileID: 103687877}
   - component: {fileID: 103687876}
   - component: {fileID: 103687878}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -293,7 +293,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2.5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -317,8 +317,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b916c4691fec3439393234fb34d6e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 1
-  isJumping: 0
+  jumpForce: 10
+  isGrounded: 0
+  jumpCnt: 0
   playerRigidBody: {fileID: 103687877}
 --- !u!1 &519420028
 GameObject:
@@ -554,9 +555,9 @@ GameObject:
   - component: {fileID: 899659944}
   - component: {fileID: 899659947}
   - component: {fileID: 899659948}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -702,7 +703,7 @@ GameObject:
   - component: {fileID: 977378269}
   - component: {fileID: 977378268}
   - component: {fileID: 977378272}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -826,7 +827,7 @@ GameObject:
   - component: {fileID: 2111495682}
   - component: {fileID: 2111495681}
   - component: {fileID: 2111495685}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Buildings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
