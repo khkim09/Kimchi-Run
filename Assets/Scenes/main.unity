@@ -317,10 +317,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b916c4691fec3439393234fb34d6e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 10
-  isGrounded: 0
+  jumpForce: 12
   jumpCnt: 0
   playerRigidBody: {fileID: 103687877}
+  playerAnimator: {fileID: 103687873}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
