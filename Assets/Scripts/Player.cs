@@ -40,4 +40,17 @@ public class Player : MonoBehaviour
             jumpCnt = 0;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.tag == "enemy")
+        {
+
+        }
+        
+        if (collider.tag == "food")
+        {
+
+        }
+    }
 }
