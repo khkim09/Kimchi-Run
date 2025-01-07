@@ -11,6 +11,6 @@ public class BackgroundScroll : MonoBehaviour
 
     void Update()
     {
-        meshRenderer.material.mainTextureOffset += new Vector2(scrollSpeed * Time.deltaTime, 0); // frame 단위 -> 1s 단위 update (Time.deltaTime)
+        meshRenderer.material.mainTextureOffset += new Vector2(scrollSpeed * GameManager.GM.CalculateGameSpeed() * 0.1f * Time.deltaTime, 0); // frame 단위 -> 1s 단위 update (Time.deltaTime)
     }
 }

@@ -2,11 +2,8 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    [Header("Settings")]
-    [SerializeField] private float moveSpeed = 1.0f;
-
     void Update()
     {
-        transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+        transform.position += Vector3.left * GameManager.GM.CalculateGameSpeed() * 0.8f * Time.deltaTime;
     }
 }
