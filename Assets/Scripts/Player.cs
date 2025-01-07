@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
     [SerializeField] private Rigidbody2D playerRigidBody; // 'Player' 물리 법칙 적용
     [SerializeField] private Animator playerAnimator; // 'Player' 애니메이션 적용
     [SerializeField] private BoxCollider2D playerCollider; // 'Player' death 구현
-    [SerializeField] private int lives = 3; // 생명
     [SerializeField] private bool isInvincible = false; // 무적 상태
 
     void Update()
@@ -44,28 +43,32 @@ public class Player : MonoBehaviour
         }
     }
 
-    void KillPlayer()
+    public void KillPlayer()
     {
-        playerCollider.enabled = false;
-        playerAnimator.enabled = false;
-        playerRigidBody.linearVelocity = Vector2.zero;
-        playerRigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-
-        // 모든 object(배경, 장애물, food 등) 움직임 멈추도록 구현
+        playerAnimator.SetInteger("state", 1); // 마지막 jump animation 수행
+        playerCollider.enabled = false; // 'Player' 캐릭터 추락을 위해 collider 해제
+        playerAnimator.enabled = false; // 'Player'의 animator도 해제
+        playerRigidBody.linearVelocity = Vector2.zero; // 현재 'player'위치에서 마지막 jump motion을 위해 velocity 초기화
+        playerRigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse); // 마지막 jump motion
+        
+        if (transform.position.y < -7) // 추락 후 gameObject 삭제
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Hit()
     {
-        lives -= 1;
-        if (lives == 0)
+        GameManager.GM.lives -= 1;
+        if (GameManager.GM.lives == 0)
             KillPlayer();
     }
 
     void Heal()
     {
-        if (lives >= 3)
+        if (GameManager.GM.lives >= 3)
             return;
-        lives += 1;
+        GameManager.GM.lives += 1;
     }
 
     void StartInvincible()

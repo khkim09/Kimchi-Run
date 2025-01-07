@@ -9,9 +9,14 @@ public class Spawner : MonoBehaviour
     [Header("References")]
     [SerializeField] public GameObject[] gameObjects;
 
-    void Start()
+    void OnEnable()
     {
         Invoke("Spawn", Random.Range(minSpawnDelay, maxSpawnDelay)); // 일정 시간 후 method 호출 (2초 후 "Spawn" method 호출)
+    }
+
+    void OnDisable()
+    {
+        CancelInvoke();
     }
 
     void Spawn()
