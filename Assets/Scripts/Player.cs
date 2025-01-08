@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
                 playerAnimator.SetInteger("state", 2);
             }
             jumpCnt = 0;
+            isJumping = false;
         }
     }
 
